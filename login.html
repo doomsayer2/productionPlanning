@@ -1,0 +1,38 @@
+<html>
+
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
+<script type="text/javascript" src="js/app-login.js"></script>
+<script type="text/css" src="css/app.css"></script>
+
+
+<head>
+    <title>Product Planning Game</title>
+</head>
+
+<body ng-app="planningApp">
+
+    <div class="col-lg-4"></div>
+
+    <div ng-controller="loginController" class="container col-lg-3" style="margin-top:10%">
+        <form class="sign-in">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <input type="text" ng-model="signinEmail" class="form-control" placeholder="Username">
+            <br>
+            <input type="password" ng-model="signinPassword" class="form-control" placeholder="Password">
+            <br>
+            
+            <button ng-click="signin()" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <p class="hidden" id="loginSucces">Login succes!</p>
+            <br>
+        </form>
+    </div>
+
+
+</body>
+
+</html>

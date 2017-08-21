@@ -1,0 +1,44 @@
+<div class="col-lg-12 row">
+    <div class="col-lg-3" style="margin-left:10px;margin-top:5px;font-size:20px;">
+        <input type="radio" id="radioMRP" ng-model="planningparameter" value="MRP"> MRP</option>
+        <input type="radio" id="radioKANBAN" ng-model="planningparameter" value="KANBAN"> KANBAN</option>
+        <input type="radio" id="radioCONWIP" ng-model="planningparameter" value="CONWIP"> CONWIP</option>
+
+    </div>
+    <div class="col-lg-4" style="margin-top:-0px;">
+
+
+        <button ng-click="start()" id="burton">Start session</button>
+        <button ng-click="stop()" id="burton">Stop session</button>
+        <button ng-click="createSession()" id="burton">Reset</button>
+        <button ng-click="parameters()" id="burton">Change parameters</button>
+
+    </div>
+    <input type="text" class="hidden" ng-model="sessionName" placeholder="Enter session name" id="saveinput">
+    <button ng-click="savesession()" class=" hidden" id="savebutton1">Save</button>
+    <button ng-click="createSession()" class=" hidden" id="savebutton2">Cancel</button>
+
+    <div class="col-lg-1" style="float: right;margin-top:-20px;margin-right:20px;">
+        <h1 class="text-right">{{finalTime}}</h1>
+    </div>
+</div>
+
+<div id="hr"></div>
+
+<div class="col-lg-12 row" >
+    <div class="col-lg-1"></div>
+    <div class="col-lg-2" id="mach1">M1<br/>{{orders1[0].amount}} &nbsp;{{orders1[0].product}}</div>
+    <div class="col-lg-2" id="mach2">M2<br/>{{orders2[0].amount}} &nbsp;{{orders2[0].product}}</div>
+    <div class="col-lg-2" id="mach3">M3<br/>{{orders3[0].amount}} &nbsp;{{orders3[0].product}}</div>
+    <div class="col-lg-2" id="mach4">M4<br/>{{orders4[0].amount}} &nbsp;{{orders4[0].product}}</div>
+    <div class="col-lg-2" id="mach5">M5<br/>{{orders5[0].amount}} &nbsp;{{orders5[0].product}}</div>
+    <div class="col-lg-1"></div>
+</div>
+
+
+
+
+<div class="row col-lg-12">
+    <div class="col-lg-6" id="chart1"></div>
+    <div class="col-lg-6" id="chart2"></div>
+</div>

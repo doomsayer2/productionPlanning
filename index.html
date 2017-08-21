@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<script type="text/javascript" src="js-source/jquery-2.1.1.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">-->
+<script type="text/javascript" src="js-source/bootstrap.js"></script>
+<script type="text/javascript" src="js-source/angular.js"></script>
+<script type="text/javascript" src="jss-source/angular-route.js"></script>
+
+<script type="text/javascript" src="js/app-home.js"></script>
+<link rel="stylesheet" type="text/css" href="css/app.css">
+
+<head>
+    <title>Product Planning Game</title>
+    <link rel="icon" type="image/jpg" href="img/Logo.png">
+    <script type="text/javascript" src="js-source/d3-v4.js"></script>
+
+</head>
+
+<body ng-app="app">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="img/Logo.png" onmouseover="this.src='img/reg.png'" onmouseout="this.src='img/Logo.png'" title="Reggae Shark" id="fidel"><img>
+
+                <span class="navbar-brand">Production Planning Game</span>
+            </div>
+            <div class="hidden" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#home"> Home</a></li>
+                    <li><a href="#playgame"> Play game</a></li>
+                    <li><a href="#analyse"> Analyse</a></li>
+                    <li><a href="#instructions"> Instructions</a></li>
+                    <li><a href="#contact"> Contact</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <div ng-view></div>
+    <div id="login">
+        <div class="col-lg-4"></div>
+        <div ng-controller="loginController" class="container col-lg-3" style="margin-top:10%">
+            <form class="sign-in">
+                <h2 class="form-signin-heading">Please sign in</h2>
+                <input type="text" ng-model="signinEmail" class="form-control" placeholder="Email address">
+                <br>
+                <input type="password" ng-model="signinPassword" class="form-control" placeholder="Password">
+                <br>
+                <p class="hidden" id="loginSucces">Login succes!</p>
+                <button ng-click="signin()" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <br>
+            </form>
+        </div>
+    </div>
+
+    <script>
+      (function() {
+        var isChrome = /Chrome/.test(navigator.userAgent);
+        if (!isChrome) {
+          alert('This application is mainly designed for a usage with Google Chrome.\nRunning the website in other browsers might result in strange behavior or look.\nThis is just to inform you if anything looks out of place in other browsers.');
+        }
+      })();
+    </script>
+</body>
+
+</html>

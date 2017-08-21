@@ -1,0 +1,320 @@
+<div class="col-lg-12">
+
+    <table class="table table-bordered col-lg-6">
+        <thead>
+            <tr class="table borderless">
+                <th class="col-lg-2 text-center" id="thomas"></th>
+                <th class="col-lg-1 text-center" id="thomas" ng-hide="col1">
+                    <button type="button" class="btn" ng-click="deleteSession(0)">Erase</button>
+                </th>
+                <th class="col-lg-1 text-center" id="thomas" ng-hide="col2">
+                    <button type="button" class="btn" ng-click="deleteSession(1)">Erase</button>
+                </th>
+                <th class="col-lg-1 text-center" id="thomas" ng-hide="col3">
+                    <button type="button" class="btn" ng-click="deleteSession(2)">Erase</button>
+                </th>
+                <th class="col-lg-1 text-center" id="thomas" ng-hide="col4">
+                    <button type="button" class="btn" ng-click="deleteSession(3)">Erase</button>
+                </th>
+                <th class="col-lg-1 text-center" id="thomas" ng-hide="col5">
+                    <button type="button" class="btn" ng-click="deleteSession(4)">Erase</button>
+                </th>
+                <th class="col-lg-1 text-center" id="thomas" ng-hide="col6">
+                    <button type="button" class="btn" ng-click="deleteSession(5)">Erase</button>
+                </th>
+                <th class="col-lg-1 text-center" id="thomas" ng-hide="col7">
+                    <button type="button" class="btn" ng-click="deleteSession(6)">Erase</button>
+                </th>
+                <th class="col-lg-1 text-center" id="thomas" ng-hide="col8">
+                    <button type="button" class="btn" ng-click="deleteSession(7)">Erase</button>
+                </th>
+                <th class="col-lg-1 text-center" id="thomas" ng-hide="col9">
+                    <button type="button" class="btn" ng-click="deleteSession(8)">Erase</button>
+                </th>
+                <th class="col-lg-1 text-center" id="thomas" ng-hide="col10">
+                    <button type="button" class="btn" ng-click="deleteSession(9)">Erase</button>
+                </th>
+            </tr>
+            <tr id="lain">
+                <th class="col-lg-2 text-center"></th>
+                <th class="col-lg-1 text-center" ng-hide="col1">
+                    <button type="button" class="close" aria-label="Close" ng-click="col1 = !col1">
+                        {{data[0].sessionName}}
+                    </button>
+
+                </th>
+                <th class="col-lg-1 text-center" ng-hide="col2">
+                    <button type="button" class="close" aria-label="Close" ng-click="col2 = !col2">
+                        {{data[1].sessionName}}
+                    </button>
+                </th>
+                <th class="col-lg-1 text-center" ng-hide="col3">
+                    <button type="button" class="close" aria-label="Close" ng-click="col3 = !col3">
+                        {{data[2].sessionName}}
+                    </button>
+                </th>
+                <th class="col-lg-1 text-center" ng-hide="col4">
+                    <button type="button" class="close" aria-label="Close" ng-click="col4 = !col4">
+                        {{data[3].sessionName}}
+                    </button>
+                </th>
+                <th class="col-lg-1 text-center" ng-hide="col5">
+                    <button type="button" class="close" aria-label="Close" ng-click="col5 = !col5">
+                        {{data[4].sessionName}}
+                    </button>
+                </th>
+                <th class="col-lg-1 text-center" ng-hide="col6">
+                    <button type="button" class="close" aria-label="Close" ng-click="col6 = !col6">
+                        {{data[5].sessionName}}
+                    </button>
+                </th>
+                <th class="col-lg-1 text-center" ng-hide="col7">
+                    <button type="button" class="close" aria-label="Close" ng-click="col7 = !col7">
+                        {{data[6].sessionName}}
+                    </button>
+                </th>
+                <th class="col-lg-1 text-center" ng-hide="col8">
+                    <button type="button" class="close" aria-label="Close" ng-click="col8 = !col8">
+                        {{data[7].sessionName}}
+                    </button>
+                </th>
+                <th class="col-lg-1 text-center" ng-hide="col9">
+                    <button type="button" class="close" aria-label="Close" ng-click="col9 = !col9">
+                        {{data[8].sessionName}}
+                    </button>
+                </th>
+                <th class="col-lg-1 text-center" ng-hide="col10">
+                    <button type="button" class="close" aria-label="Close" ng-click="col10 = !col10">
+                        {{data[9].sessionName}}
+                    </button>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="col-lg-2 text-left">Inventory</td>
+                <td class="col-lg-1 text-center" ng-hide="col1">{{data[0].averageInv}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col2">{{data[1].averageInv}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col3">{{data[2].averageInv}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col4">{{data[3].averageInv}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col5">{{data[4].averageInv}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col6">{{data[5].averageInv}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col7">{{data[6].averageInv}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col8">{{data[7].averageInv}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col9">{{data[8].averageInv}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col10">{{data[9].averageInv}}</td>
+            </tr>
+            <tr>
+                <td class="col-lg-2 text-left">WIP</td>
+                <td class="col-lg-1 text-center" ng-hide="col1">{{data[0].averageWip}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col2">{{data[1].averageWip}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col3">{{data[2].averageWip}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col4">{{data[3].averageWip}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col5">{{data[4].averageWip}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col6">{{data[5].averageWip}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col7">{{data[6].averageWip}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col8">{{data[7].averageWip}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col9">{{data[8].averageWip}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col10">{{data[9].averageWip}}</td>
+            </tr>
+            <tr>
+                <td class="col-lg-2 text-left">FGI</td>
+                <td class="col-lg-1 text-center" ng-hide="col1">{{data[0].averageFgi}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col2">{{data[1].averageFgi}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col3">{{data[2].averageFgi}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col4">{{data[3].averageFgi}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col5">{{data[4].averageFgi}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col6">{{data[5].averageFgi}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col7">{{data[6].averageFgi}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col8">{{data[7].averageFgi}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col9">{{data[8].averageFgi}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col10">{{data[9].averageFgi}}</td>
+
+            </tr>
+            <tr id="lain">
+                <td class="col-lg-2 text-left"><b>UTILISATION</b></td>
+                <td class="col-lg-1 text-center" ng-hide="col1"></td>
+                <td class="col-lg-1 text-center" ng-hide="col2"></td>
+                <td class="col-lg-1 text-center" ng-hide="col3"></td>
+                <td class="col-lg-1 text-center" ng-hide="col4"></td>
+                <td class="col-lg-1 text-center" ng-hide="col5"></td>
+                <td class="col-lg-1 text-center" ng-hide="col6"></td>
+                <td class="col-lg-1 text-center" ng-hide="col7"></td>
+                <td class="col-lg-1 text-center" ng-hide="col8"></td>
+                <td class="col-lg-1 text-center" ng-hide="col9"></td>
+                <td class="col-lg-1 text-center" ng-hide="col10"></td>
+            </tr>
+            <tr>
+                <td class="col-lg-2 text-left">5: Finishing</td>
+                <td class="col-lg-1 text-center" ng-hide="col1">{{data[0].utilisation_M5}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col2">{{data[1].utilisation_M5}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col3">{{data[2].utilisation_M5}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col4">{{data[3].utilisation_M5}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col5">{{data[4].utilisation_M5}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col6">{{data[5].utilisation_M5}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col7">{{data[6].utilisation_M5}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col8">{{data[7].utilisation_M5}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col9">{{data[8].utilisation_M5}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col10">{{data[9].utilisation_M5}}</td>
+            </tr>
+            <tr>
+                <td class="col-lg-2 text-left">4: Customization</td>
+                <td class="col-lg-1 text-center" ng-hide="col1">{{data[0].utilisation_M4}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col2">{{data[1].utilisation_M4}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col3">{{data[2].utilisation_M4}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col4">{{data[3].utilisation_M4}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col5">{{data[4].utilisation_M4}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col6">{{data[5].utilisation_M4}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col7">{{data[6].utilisation_M4}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col8">{{data[7].utilisation_M4}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col9">{{data[8].utilisation_M4}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col10">{{data[9].utilisation_M4}}</td>
+            </tr>
+            <tr>
+                <td class="col-lg-2 text-left">3: Painting</td>
+                <td class="col-lg-1 text-center" ng-hide="col1">{{data[0].utilisation_M3}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col2">{{data[1].utilisation_M3}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col3">{{data[2].utilisation_M3}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col4">{{data[3].utilisation_M3}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col5">{{data[4].utilisation_M3}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col6">{{data[5].utilisation_M3}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col7">{{data[6].utilisation_M3}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col8">{{data[7].utilisation_M3}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col9">{{data[8].utilisation_M3}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col10">{{data[9].utilisation_M3}}</td>
+            </tr>
+            <tr>
+                <td class="col-lg-2 text-left">2: Surface Treatment</td>
+                <td class="col-lg-1 text-center" ng-hide="col1">{{data[0].utilisation_M2}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col2">{{data[1].utilisation_M2}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col3">{{data[2].utilisation_M2}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col4">{{data[3].utilisation_M2}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col5">{{data[4].utilisation_M2}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col6">{{data[5].utilisation_M2}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col7">{{data[6].utilisation_M2}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col8">{{data[7].utilisation_M2}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col9">{{data[8].utilisation_M2}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col10">{{data[9].utilisation_M2}}</td>
+            </tr>
+            <tr>
+                <td class="col-lg-2 text-left">1: Pre-cut</td>
+                <td class="col-lg-1 text-center" ng-hide="col1">{{data[0].utilisation_M1}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col2">{{data[1].utilisation_M1}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col3">{{data[2].utilisation_M1}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col4">{{data[3].utilisation_M1}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col5">{{data[4].utilisation_M1}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col6">{{data[5].utilisation_M1}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col7">{{data[6].utilisation_M1}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col8">{{data[7].utilisation_M1}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col9">{{data[8].utilisation_M1}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col10">{{data[9].utilisation_M1}}</td>
+            </tr>
+            <tr id="lain">
+                <td class="col-lg-2 text-left"><b>TIME/PIECE</b></td>
+                <td class="col-lg-1 text-center" ng-hide="col1"></td>
+                <td class="col-lg-1 text-center" ng-hide="col2"></td>
+                <td class="col-lg-1 text-center" ng-hide="col3"></td>
+                <td class="col-lg-1 text-center" ng-hide="col4"></td>
+                <td class="col-lg-1 text-center" ng-hide="col5"></td>
+                <td class="col-lg-1 text-center" ng-hide="col6"></td>
+                <td class="col-lg-1 text-center" ng-hide="col7"></td>
+                <td class="col-lg-1 text-center" ng-hide="col8"></td>
+                <td class="col-lg-1 text-center" ng-hide="col9"></td>
+                <td class="col-lg-1 text-center" ng-hide="col10"></td>
+            </tr>
+            <tr>
+                <td class="col-lg-2 text-left">5: Finishing</td>
+                <td class="col-lg-1 text-center" ng-hide="col1">{{data[0].timePerPiece_M5}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col2">{{data[1].timePerPiece_M5}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col3">{{data[2].timePerPiece_M5}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col4">{{data[3].timePerPiece_M5}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col5">{{data[4].timePerPiece_M5}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col6">{{data[5].timePerPiece_M5}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col7">{{data[6].timePerPiece_M5}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col8">{{data[7].timePerPiece_M5}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col9">{{data[8].timePerPiece_M5}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col10">{{data[9].timePerPiece_M5}}</td>
+            </tr>
+            <tr>
+                <td class="col-lg-2 text-left">4: Customization</td>
+                <td class="col-lg-1 text-center" ng-hide="col1">{{data[0].timePerPiece_M4}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col2">{{data[1].timePerPiece_M4}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col3">{{data[2].timePerPiece_M4}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col4">{{data[3].timePerPiece_M4}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col5">{{data[4].timePerPiece_M4}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col6">{{data[5].timePerPiece_M4}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col7">{{data[6].timePerPiece_M4}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col8">{{data[7].timePerPiece_M4}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col9">{{data[8].timePerPiece_M4}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col10">{{data[9].timePerPiece_M4}}</td>
+            </tr>
+            <tr>
+                <td class="col-lg-2 text-left">3: Painting</td>
+                <td class="col-lg-1 text-center" ng-hide="col1">{{data[0].timePerPiece_M3}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col2">{{data[1].timePerPiece_M3}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col3">{{data[2].timePerPiece_M3}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col4">{{data[3].timePerPiece_M3}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col5">{{data[4].timePerPiece_M3}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col6">{{data[5].timePerPiece_M3}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col7">{{data[6].timePerPiece_M3}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col8">{{data[7].timePerPiece_M3}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col9">{{data[8].timePerPiece_M3}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col10">{{data[9].timePerPiece_M3}}</td>
+            </tr>
+            <tr>
+                <td class="col-lg-2 text-left">2: Surface Treatment</td>
+                <td class="col-lg-1 text-center" ng-hide="col1">{{data[0].timePerPiece_M2}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col2">{{data[1].timePerPiece_M2}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col3">{{data[2].timePerPiece_M2}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col4">{{data[3].timePerPiece_M2}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col5">{{data[4].timePerPiece_M2}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col6">{{data[5].timePerPiece_M2}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col7">{{data[6].timePerPiece_M2}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col8">{{data[7].timePerPiece_M2}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col9">{{data[8].timePerPiece_M2}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col10">{{data[9].timePerPiece_M2}}</td>
+            </tr>
+            <tr>
+                <td class="col-lg-2 text-left">1: Pre-cut</td>
+                <td class="col-lg-1 text-center" ng-hide="col1">{{data[0].timePerPiece_M1}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col2">{{data[1].timePerPiece_M1}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col3">{{data[2].timePerPiece_M1}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col4">{{data[3].timePerPiece_M1}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col5">{{data[4].timePerPiece_M1}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col6">{{data[5].timePerPiece_M1}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col7">{{data[6].timePerPiece_M1}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col8">{{data[7].timePerPiece_M1}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col9">{{data[8].timePerPiece_M1}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col10">{{data[9].timePerPiece_M1}}</td>
+            </tr>
+
+            <tr id="lain">
+                <td class="col-lg-2 text-left">Servicelevel:</td>
+                <td class="col-lg-1 text-center" ng-hide="col1">{{data[0].serviceLevel}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col2">{{data[1].serviceLevel}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col3">{{data[2].serviceLevel}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col4">{{data[3].serviceLevel}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col5">{{data[4].serviceLevel}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col6">{{data[5].serviceLevel}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col7">{{data[6].serviceLevel}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col8">{{data[7].serviceLevel}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col9">{{data[8].serviceLevel}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col10">{{data[9].serviceLevel}}</td>
+            </tr>
+            <tr id="lain">
+                <td class="col-lg-2 text-left">Leadtime: </td>
+                <td class="col-lg-1 text-center" ng-hide="col1">{{data[0].leadtime}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col2">{{data[1].leadtime}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col3">{{data[2].leadtime}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col4">{{data[3].leadtime}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col5">{{data[4].leadtime}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col6">{{data[5].leadtime}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col7">{{data[6].leadtime}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col8">{{data[7].leadtime}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col9">{{data[8].leadtime}}</td>
+                <td class="col-lg-1 text-center" ng-hide="col10">{{data[9].leadtime}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

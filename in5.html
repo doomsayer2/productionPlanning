@@ -1,0 +1,105 @@
+<ul class="nav nav-tabs nav-justified">
+    <li><a href="#in1">Cutting</a></li>
+    <li><a href="#in2">Surface treatment</a></li>
+    <li><a href="#in3">Paint</a></li>
+    <li><a href="#in4">Assembly</a></li>
+    <li class="active"><a href="#in5">Final assembly</a></li>
+</ul>
+
+<div class="row col-lg-12">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-9">
+        <p>Take the pieces from the workstation 4 (D0 and D1) and paint them according to the figure above. Depending on the final product requirement, paint the piece with blue for E0, green for E1 or purple for E2.</p>
+    </div>
+    <div class="col-lg-1"></div>
+</div>
+<div class="row col-lg-12">
+    <div class="col-lg-1"></div>
+
+    <div class="col-lg-3">
+        <h3>MRP</h3>
+        <ul>
+            <li>
+                <p>1. An order appears on the screen.</p>
+            </li>
+            <li>
+                <p>2. The specific quantity of the submaterial is taken from the inventory in front of the workstation.</p>
+            </li>
+            <li>
+                <p>3. Check in.
+                </p>
+            </li>
+            <li>
+                <p>4. Execute the individual work step.
+                </p>
+            </li>
+            <li>
+                <p>5. Check out.
+                </p>
+            </li>
+            <li>
+                <p>6. Put the products to the inventory in front of the next machine (no capacity limit).
+                </p>
+            </li>
+            <li>
+                <p>Equipment: 6 containers. 3 container to produce (E0, E1 or E2), and 3 representing the finished good inventory for products E0, E1 and E2 (no capacity limit).
+                </p>
+            </li>
+
+
+
+        </ul>
+    </div>
+
+    <div class="col-lg-3">
+        <h3>KANBAN</h3>
+        <ul>
+            <li>
+                <p>1. The customer takes the final products E0, E1 and E2 and withdraws a Kanban container.</p>
+            </li>
+            <li>
+                <p>2. If the submaterials E0 or E1 are available in inventory start production. </p>
+            </li>
+            <li>
+                <p>3. Check in.</p>
+            </li>
+            <li>
+                <p>4. Execute the individual work step.</p>
+            </li>
+            <li>
+                <p>5. Check out.</p>
+            </li>
+            <li>
+                <p>6. Fill the Kanban container with the produced products an put the container in the finished good inventory after workstation 5 (Attention to the Kanban lotsize)</p>
+            </li>
+            <li>
+                <p>Equipment: Default settings are 3 Kanban containers to work and store the products in the finished good inventory. The customer takes the final products from there if they are available. </p>
+            </li>
+
+        </ul>
+    </div>
+    <div class="col-lg-3">
+        <h3>CONWIP</h3>
+        <ul>
+            <li>
+                <p>1. As soon as a labelled container from the previous container arrives, start production.</p>
+            </li>
+            <li>
+                <p>2. Check in.</p>
+            </li>
+            <li>
+                <p>3. Execute the individual work step to produce the right final product.</p>
+            </li>
+            <li>
+                <p>4. Check out.</p>
+            </li>
+            <li>
+                <p>5. Put the container to the finished good inventory after workstation 5.</p>
+            </li>
+
+            <li>
+                <p>Equipment: None. The container with the customer order information is taken from the previous workstation and transported after production to the finished good inventory.</p>
+            </li>
+        </ul>
+    </div>
+</div>

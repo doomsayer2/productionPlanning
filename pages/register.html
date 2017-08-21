@@ -1,0 +1,33 @@
+<html>
+
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script type="text/javascript" src="js/app-register.js"></script>
+<script type="text/css" src="css/app.css"></script>
+
+
+<head>
+    <title>Product Planning Game</title>
+</head>
+
+<body ng-app="planningApp">
+    <div class="col-lg-4"></div>
+    <div ng-controller="registerController" class="container col-lg-3" style="margin-top:10%">
+        <form class="sign-in">
+            <h2 class="form-signin-heading">Sign up</h2>
+            <input type="text" ng-model="registerName" class="form-control" placeholder="Name"><br>
+            <input type="text" ng-model="registerLastName" class="form-control" placeholder="Last name"><br>
+            <input type="email" ng-model="registerEmail" class="form-control" placeholder="Email address"><br>
+            <input type="password" ng-model="registerPassword1" class="form-control" placeholder="Password"><br>
+            <input type="password" ng-model="registerPassword2" class="form-control" placeholder="Repeat password"><br><br>
+            <button ng-click="register()" class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+        </form>
+    </div>
+
+
+</body>
+
+</html>

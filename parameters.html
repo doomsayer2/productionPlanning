@@ -1,0 +1,141 @@
+<div>
+    <h1 id="form">Choose your parameters here</h1>
+    <button ng-click="saveParameters()" class="btn btn-primary perkele" id="burton">Submit</button>
+    
+    <h3 id="bs">{{submitted}} </h3>
+    
+    <table class="table" id="mrpTable">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Safty Stock (pcs)</th>
+                <th>Lost Size (pcs)</th>
+                <th>Lead Time (sec)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>A0</td>
+                <td><input type="number" ng-model="saftystock_A0" min="0"></td>
+                <td><input type="number" ng-model="lostsize_A0" min="0"></td>
+                <td><input type="number" ng-model="leadtime_A0" min="0"></td>
+            </tr>
+            <tr>
+                <td>B0</td>
+                <td><input type="number" ng-model="saftystock_B0" min="0"></td>
+                <td><input type="number" ng-model="lostsize_B0" min="0"></td>
+                <td><input type="number" ng-model="leadtime_B0" min="0"></td>
+            </tr>
+            <tr>
+                <td>C0</td>
+                <td><input type="number" ng-model="saftystock_C0" min="0"></td>
+                <td><input type="number" ng-model="lostsize_C0" min="0"></td>
+                <td><input type="number" ng-model="leadtime_C0" min="0"></td>
+            </tr>
+            <tr>
+                <td>D0</td>
+                <td><input type="number" ng-model="saftystock_D0" min="0"></td>
+                <td><input type="number" ng-model="lostsize_D0" min="0"></td>
+                <td><input type="number" ng-model="leadtime_D0" min="0"></td>
+            </tr>
+            <tr>
+                <td>D1</td>
+                <td><input type="number" ng-model="saftystock_D1" min="0"></td>
+                <td><input type="number" ng-model="lostsize_D1" min="0"></td>
+                <td><input type="number" ng-model="leadtime_D1" min="0"></td>
+            </tr>
+            <tr>
+                <td>E0</td>
+                <td><input type="number" ng-model="saftystock_E0" min="0"></td>
+                <td><input type="number" ng-model="lostsize_E0" min="0"></td>
+                <td><input type="number" ng-model="leadtime_E0" min="0"></td>
+            </tr>
+            <tr>
+                <td>E1</td>
+                <td><input type="number" ng-model="saftystock_E1" min="0"></td>
+                <td><input type="number" ng-model="lostsize_E1" min="0"></td>
+                <td><input type="number" ng-model="leadtime_E1" min="0"></td>
+            </tr>
+            <tr>
+                <td>E2</td>
+                <td><input type="number" ng-model="saftystock_E2" min="0"></td>
+                <td><input type="number" ng-model="lostsize_E2" min="0"></td>
+                <td><input type="number" ng-model="leadtime_E2" min="0"></td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table" id="kanbanTable">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>#KANBAN</th>
+                <th>Lotsize</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>A0</td>
+                <td><input type="number" ng-model="kanban_A0" min="0"></td>
+                <td><input type="number" ng-model="kanbonlotsize_A0" min="0"></td>
+            </tr>
+            <tr>
+                <td>B0</td>
+                <td><input type="number" ng-model="kanban_B0" min="0"></td>
+                <td><input type="number" ng-model="kanbonlotsize_B0" min="0"></td>
+            </tr>
+            <tr>
+                <td>C0</td>
+                <td><input type="number" ng-model="kanban_C0" min="0"></td>
+                <td><input type="number" ng-model="kanbonlotsize_C0" min="0"></td>
+            </tr>
+            <tr>
+                <td>D0</td>
+                <td><input type="number" ng-model="kanban_D0" min="0"></td>
+                <td><input type="number" ng-model="kanbonlotsize_D0" min="0"></td>
+            </tr>
+            <tr>
+                <td>D1</td>
+                <td>
+                    <input type="number" ng-model="kanban_D1" min="0">
+                </td>
+                <td>
+                    <input type="number" ng-model="kanbonlotsize_D1" min="0">
+                </td>
+            </tr>
+            <tr>
+                <td>E0</td>
+                <td>
+                    <input type="number" ng-model="kanban_E0" min="0">
+                </td>
+                <td>
+                    <input type="number" ng-model="kanbonlotsize_E0" min="0">
+                </td>
+            </tr>
+            <tr>
+                <td>E1</td>
+                <td><input type="number" ng-model="kanban_E1" min="0"></td>
+                <td><input type="number" ng-model="kanbonlotsize_E1" min="0"></td>
+            </tr>
+            <tr>
+                <td>E2</td>
+                <td><input type="number" ng-model="kanban_E2" min="0"></td>
+                <td><input type="number" ng-model="kanbonlotsize_E2" min="0"></td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table" id="conwipTable">
+        <thead>
+            <tr>
+                <th>WipCap</th>
+                <th>WorkAheadWindow</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="number" ng-model="wipcap" min="0"></td>
+                <td><input type="number" ng-model="workahead" min="0"></td>
+            </tr>
+        </tbody>
+    </table>
+   
+</div>

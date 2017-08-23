@@ -1,15 +1,18 @@
 <div class="col-lg-12 row">
     <div class="col-lg-3" style="margin-left:10px;margin-top:5px;font-size:20px;">
-        <input type="radio" id="radioMRP" ng-model="planningparameter" value="MRP"> MRP</option>
-        <input type="radio" id="radioKANBAN" ng-model="planningparameter" value="KANBAN"> KANBAN</option>
-        <input type="radio" id="radioCONWIP" ng-model="planningparameter" value="CONWIP"> CONWIP</option>
+        <input type="radio" id="radioMRP" ng-model="planningparameter" value="MRP">
+        <label for="radioMRP">MRP</label>
+        <input type="radio" id="radioKANBAN" ng-model="planningparameter" value="KANBAN">
+        <label for="radioKANBAN">KANBAN</label>
+        <input type="radio" id="radioCONWIP" ng-model="planningparameter" value="CONWIP">
+        <label for="radioCONWIP">CONWIP</label>
     </div>
 
     <div class="col-lg-4" style="margin-top:-0px;">
-        <button ng-click="start()" id="btnStart">Start session</button>
-        <button ng-click="stop()" id="btnStop">Stop session</button>
-        <button ng-click="createSession()" id="btnReset">Reset</button>
-        <button ng-click="parameters()" id="btnChange">Change parameters</button>
+        <button ng-click="start()" id="btnStart" class="button">Start session</button>
+        <button ng-click="stop()" id="btnStop" class="button">Stop session</button>
+        <button ng-click="createSession()" id="btnReset" class="button">Reset</button>
+        <button ng-click="parameters()" id="btnChange" class="button">Change parameters</button>
     </div>
 
     <input type="text" class="hidden" ng-model="sessionName" placeholder="Enter session name" id="saveinput">
@@ -32,6 +35,8 @@
     <div class="col-lg-2" id="mach5">M5<br/>{{orders5[0].amount}} &nbsp;{{orders5[0].product}}</div>
     <div class="col-lg-1"></div>
 </div>
+<br/>
+<br/>
 
 <div class="row col-lg-12">
     <div class="col-lg-6" id="chart1"></div>

@@ -98,7 +98,7 @@ body {
     font-size: 30px;
 }
 
-#burton {
+.button {
     background-color: darkgray;
     color: white;
     border-radius: 7px;
@@ -106,7 +106,7 @@ body {
     padding: 8px;
 }
 
-#burton:hover {
+.button:hover {
     background-color: gainsboro;
     color: dimgray;
 }
@@ -165,7 +165,7 @@ body {
     color: whitesmoke;
     
 }
-#thomas
+#tableBack
 {
     background-color: whitesmoke;
     border-style: hidden;

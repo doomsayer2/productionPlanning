@@ -1,6 +1,7 @@
 var app = angular.module("planningApp", []);
 
-var IPAdress = "35.165.103.236";
+// var IPAdress = "35.165.103.236";
+var IPAdress = "91.219.68.208";
 
 app.controller("loginController", function ($scope, $http, $location) {
 

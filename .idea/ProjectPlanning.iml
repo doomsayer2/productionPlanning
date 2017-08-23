@@ -16,5 +16,6 @@
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="library" name="angular.js" level="application" />
   </component>
 </module>

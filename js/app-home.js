@@ -158,10 +158,10 @@ app.controller('loginController', function ($scope, $http, $location) {
     $scope.signin = function () {
         var status = document.getElementById("loginSucces");
         var successCallback = function (response) {
-            if (response.data == "*Approved*") {
+            if (response.data === "*Approved*") {
                 //notifaction because redirect doesn't work
                 window.location.href = "index.html#/home";
-            } else if (response.data == "*Denied*"){
+            } else if (response.data === "*Denied*"){
                 status.innerHTML = "Login failed! Please try again.";
                 status.className = "alert alert-danger";
             }
@@ -397,17 +397,17 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
             .text("Service Level");
 
         $scope.planningparameter = planningParameter;
-        if(planningParameter == "MRP"){
+        if(planningParameter === "MRP"){
             document.getElementById('radioMRP').checked = true;
             document.getElementById('radioKANBAN').checked = false;
             document.getElementById('radioCONWIP').checked = false;
         } else
-        if(planningParameter == "KANBAN"){
+        if(planningParameter === "KANBAN"){
             document.getElementById('radioMRP').checked = false;
             document.getElementById('radioKANBAN').checked = true;
             document.getElementById('radioCONWIP').checked = false;
         } else
-        if(planningParameter == "CONWIP"){
+        if(planningParameter === "CONWIP"){
             document.getElementById('radioMRP').checked = false;
             document.getElementById('radioKANBAN').checked = false;
             document.getElementById('radioCONWIP').checked = true;
@@ -444,29 +444,31 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
         // var successCallbackInventory = function (response) { };
         //get the status from every machine with a post-req
         var successCallbackStats = function (response) {
-          console.log("PlayGame-Controller_homeInterval_Method: successCallback", response);
+          //console.log("PlayGame-Controller_homeInterval_Method: successCallback", response);
             $scope.stats = response.data;
         };
         var errorCallback = function (response) {
             console.log("error");
             alert.call(response);
         };
+
+        //TODO: This definitely needs to be a socket listener in order to prevent the overload.
         $http.get('http://'+IPAdress+'/getstats').then(successCallbackStats, errorCallback);
         //start the gametime
-        if (startstop == 'start') {
+        if (startstop === 'start') {
             currentTime = performance.now();
             $scope.t3 = Math.round((currentTime - startTime) / 1000);
             minutes = Math.floor($scope.t3 / 60);
             seconds = $scope.t3 % 60;
             $scope.finalTime = str_pad_left(minutes,'0',2)+':'+str_pad_left(seconds,'0',2);
         }
-        else if (startstop == 'change'){
+        else if (startstop === 'change'){
             $scope.t3 = 0;
         }
 
         //push orders in orderslists when time is equal
         for (i = 0; i < $scope.orderlist.length; i++) {
-            if ($scope.t3 == $scope.orderlist[i].time) {
+            if ($scope.t3 === $scope.orderlist[i].time) {
                 switch($scope.orderlist[i].machine){
                     case "machine1":
                             $scope.orders1.push($scope.orderlist[i]);
@@ -488,22 +490,22 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
         }
 
         //machine1
-        if($scope.stats[0].machine == "machine1"){
-            var currentStateM1 = $scope.stats[0].status;
+        if($scope.stats[0].machine === "machine1"){
+          var currentState1 = $scope.stats[0].status;
             //Positive flank --> from idle to working
-            if(currentStateM1=="working" && prevStateM1 == "idle"){
+            if(currentState1 === "working" && prevStateM1 === "idle"){
                 timeM1_start = performance.now();
                 for(var i = 0; i < $scope.orders1[0].amount; i++){
                     inventory_M1.push($scope.t3);
                 }
             }
             //Negative flank --> from working to idle
-            if(currentStateM1=="idle" && prevStateM1 == "working"){
+            if(currentState1 === "idle" && prevStateM1 === "working"){
                 timeM1_stop = performance.now();
                 time_M1 += (timeM1_stop - timeM1_start)/1000;
                 producedPieces_M1 += $scope.orders1[0].amount;
                 for(var i = 0; i < $scope.orders1[0].amount; i++){
-                    inventory_A0.push(inventory_M1[0])
+                    inventory_A0.push(inventory_M1[0]);
                     inventory_M1.shift();
                 }
                 if($scope.orders1.length > 0)
@@ -514,46 +516,45 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
             }
             prevStateM1 = $scope.stats[0].status;
             //change the colors of the machines
-            var machine = document.getElementById("mach1");
-            if (currentState == "idle"){
-                machine.style.backgroundColor = "#00BFFF";
+            var machine1 = document.getElementById("mach1");
+            if (currentState1 === "idle"){
+                machine1.style.backgroundColor = "#00BFFF";
             }
-            if(currentState == "idle" && $scope.orders1.length > 0){
-                machine.style.backgroundColor =  "#FF0000";
+            if(currentState1 === "idle" && $scope.orders1.length > 0){
+                machine1.style.backgroundColor =  "#FF0000";
             }
-            if(currentState == "working"){
-                machine.style.backgroundColor =  "#32CD32";
+            if(currentState1 === "working"){
+                machine1.style.backgroundColor =  "#32CD32";
             }
-            if(currentState == "non-active"){
-                machine.style.backgroundColor = "whitesmoke";
+            if(currentState1 === "non-active"){
+                machine1.style.backgroundColor = "whitesmoke";
             }
-
         }
         //machine2
-        if($scope.stats[1].machine == "machine2"){
-            var currentState = $scope.stats[1].status;
+        if($scope.stats[1].machine === "machine2"){
+            var currentState2 = $scope.stats[1].status;
             //Positive flank --> from idle to working
-            if(currentState=="working" && prevStateM2 == "idle"){
+            if(currentState2 === "working" && prevStateM2 === "idle"){
                 timeM2_start = performance.now();
                 for(var i = 0; i < $scope.orders2[0].amount; i++){
                     if(inventory_A0[0] == "0"){
                         inventory_M2.push($scope.t3);
                         inventory_A0.shift();
 
-                    }else{
+                    } else {
                         inventory_M2.push(inventory_A0[0]);
                         inventory_A0.shift();
                     }
                 }
             }
             //Negative flank --> from working to idle
-            if(currentState=="idle" && prevStateM2 == "working"){
+            if(currentState2 === "idle" && prevStateM2 === "working"){
                 timeM2_stop = performance.now();
                 time_M2 += (timeM2_stop - timeM2_start)/1000;
 
                 producedPieces_M2 += $scope.orders2[0].amount;
                 for(var i = 0; i < $scope.orders2[0].amount; i++){
-                    inventory_B0.push(inventory_M2[0])
+                    inventory_B0.push(inventory_M2[0]);
                     inventory_M2.shift();
                 }
                 if($scope.orders2.length > 0)
@@ -564,32 +565,32 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
             }
             prevStateM2 = $scope.stats[1].status;
             //change the colors of the machines
-            var machine = document.getElementById("mach2");
-            if (currentState == "idle"){
-                machine.style.backgroundColor = "#00BFFF";
+            var machine2 = document.getElementById("mach2");
+            if (currentState2 === "idle"){
+                machine2.style.backgroundColor = "#00BFFF";
             }
-            if(currentState == "idle" && $scope.orders2.length > 0){
-                machine.style.backgroundColor =  "#FF0000";
+            if(currentState2 === "idle" && $scope.orders2.length > 0){
+                machine2.style.backgroundColor =  "#FF0000";
             }
-            if(currentState == "working"){
-                machine.style.backgroundColor =  "#32CD32";
+            if(currentState2 === "working"){
+                machine2.style.backgroundColor =  "#32CD32";
             }
-            if(currentState == "non-active"){
-                machine.style.backgroundColor = "whitesmoke";
+            if(currentState2 === "non-active"){
+                machine2.style.backgroundColor = "whitesmoke";
             }
         }
         //machine3
-        if($scope.stats[2].machine == "machine3"){
-            var currentState = $scope.stats[2].status;
+        if($scope.stats[2].machine === "machine3"){
+            var currentState3 = $scope.stats[2].status;
             //Positive flank --> from idle to working
-            if(currentState=="working" && prevStateM3 == "idle"){
+            if(currentState3 === "working" && prevStateM3 === "idle"){
                 timeM3_start = performance.now();
                 for(var i = 0; i < $scope.orders3[0].amount; i++){
-                    if(inventory_B0[0] == "0"){
+                    if(inventory_B0[0] === "0"){
                         inventory_M3.push($scope.t3);
                         inventory_B0.shift();
 
-                    }else{
+                    } else {
                         inventory_M3.push(inventory_B0[0]);
                         inventory_B0.shift();
                     }
@@ -597,12 +598,12 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
                 }
             }
             //Negative flank --> from working to idle
-            if(currentState=="idle" && prevStateM3 == "working"){
+            if(currentState3 === "idle" && prevStateM3 === "working"){
                 timeM3_stop = performance.now();
                 time_M3 += (timeM3_stop - timeM3_start)/1000;
                 producedPieces_M3 += $scope.orders3[0].amount;
                 for(var i = 0; i < $scope.orders3[0].amount; i++){
-                    inventory_C0.push(inventory_M3[0])
+                    inventory_C0.push(inventory_M3[0]);
                     inventory_M3.shift();
                 }
                 if($scope.orders3.length > 0)
@@ -613,49 +614,49 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
             }
             prevStateM3 = $scope.stats[2].status;
             //change the colors of the machines
-            var machine = document.getElementById("mach3");
-            if (currentState == "idle"){
-                machine.style.backgroundColor = "#00BFFF";
+            var machine3 = document.getElementById("mach3");
+            if (currentState3 === "idle"){
+                machine3.style.backgroundColor = "#00BFFF";
             }
-            if(currentState == "idle" && $scope.orders3.length > 0){
-                machine.style.backgroundColor =  "#FF0000";
+            if(currentState3 === "idle" && $scope.orders3.length > 0){
+                machine3.style.backgroundColor =  "#FF0000";
             }
-            if(currentState == "working"){
-                machine.style.backgroundColor =  "#32CD32";
+            if(currentState3 === "working"){
+                machine3.style.backgroundColor =  "#32CD32";
             }
-            if(currentState == "non-active"){
-                machine.style.backgroundColor = "whitesmoke";
+            if(currentState3 === "non-active"){
+                machine3.style.backgroundColor = "whitesmoke";
             }
         }
         //machine4
-        if($scope.stats[3].machine == "machine4"){
-            var currentState = $scope.stats[3].status;
+        if($scope.stats[3].machine === "machine4"){
+            var currentState4 = $scope.stats[3].status;
             //Positive flank--> from idle to working
-            if(currentState=="working" && prevStateM4 == "idle"){
+            if(currentState4 === "working" && prevStateM4 === "idle"){
                 timeM4_start = performance.now();
                 for(var i = 0; i < $scope.orders4[0].amount; i++){
-                    if(inventory_C0[0] == "0"){
+                    if(inventory_C0[0] === "0"){
                         inventory_M4.push($scope.t3);
                         inventory_C0.shift();
 
-                    }else{
+                    } else {
                         inventory_M4.push(inventory_C0[0]);
                         inventory_C0.shift();
                     }
                 }
             }
             //Negative flank --> from working to idle
-            if(currentState=="idle" && prevStateM4 == "working"){
+            if(currentState4 === "idle" && prevStateM4 === "working"){
                 timeM4_stop = performance.now();
                 time_M4 += (timeM4_stop - timeM4_start)/1000;
                 producedPieces_M4 += $scope.orders4[0].amount;
                 for(var i = 0; i < $scope.orders4[0].amount; i++){
-                    if($scope.orders4[0].product == "D0"){
-                        inventory_D0.push(inventory_M4[0])
+                    if($scope.orders4[0].product === "D0"){
+                        inventory_D0.push(inventory_M4[0]);
                         inventory_M4.shift();
                     }
-                    if($scope.orders4[0].product == "D1"){
-                        inventory_D1.push(inventory_M4[0])
+                    if($scope.orders4[0].product === "D1"){
+                        inventory_D1.push(inventory_M4[0]);
                         inventory_M4.shift();
                     }
                 }
@@ -667,43 +668,41 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
             }
             prevStateM4 = $scope.stats[3].status;
             //change the colors of the machines
-            var machine = document.getElementById("mach4");
-            if (currentState == "idle"){
-                machine.style.backgroundColor = "#00BFFF";
+            var machine4 = document.getElementById("mach4");
+            if (currentState4 === "idle"){
+                machine4.style.backgroundColor = "#00BFFF";
             }
-            if(currentState == "idle" && $scope.orders4.length > 0){
-                machine.style.backgroundColor =  "#FF0000";
+            if(currentState4 === "idle" && $scope.orders4.length > 0){
+                machine4.style.backgroundColor =  "#FF0000";
             }
-            if(currentState == "working"){
-                machine.style.backgroundColor =  "#32CD32";
+            if(currentState4 === "working"){
+                machine4.style.backgroundColor =  "#32CD32";
             }
-            if(currentState == "non-active"){
-                machine.style.backgroundColor = "whitesmoke";
+            if(currentState4 === "non-active"){
+                machine4.style.backgroundColor = "whitesmoke";
             }
         }
         //machine5
-        if($scope.stats[4].machine == "machine5"){
-            var currentState = $scope.stats[4].status;
+        if($scope.stats[4].machine === "machine5"){
+            var currentState5 = $scope.stats[4].status;
             //Positive flank --> from idle to working
-            if(currentState=="working" && prevStateM5 == "idle"){
+            if(currentState5 === "working" && prevStateM5 === "idle"){
                 timeM5_start = performance.now();
                 for(var i = 0; i < $scope.orders5[0].amount; i++){
-                    if($scope.orders5[0].product == "E0" || $scope.orders5[0].product == "E1"){
-                        if(inventory_D0[0] == "0"){
+                    if($scope.orders5[0].product === "E0" || $scope.orders5[0].product === "E1"){
+                        if(inventory_D0[0] === "0"){
                             inventory_M5.push($scope.t3);
                             inventory_D0.shift();
-
-                        }else{
+                        } else {
                             inventory_M5.push(inventory_D0[0]);
                             inventory_D0.shift();
                         }
                     }
-                    if($scope.orders5[0].product == "E2"){
-                        if(inventory_D1[0] == "0"){
+                    if($scope.orders5[0].product === "E2"){
+                        if(inventory_D1[0] === "0"){
                             inventory_M5.push($scope.t3);
                             inventory_D1.shift();
-
-                        }else{
+                        } else{
                             inventory_M5.push(inventory_D1[0]);
                             inventory_D1.shift();
                         }
@@ -711,7 +710,7 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
                 }
             }
             //Negative flank --> from working to idle
-            if(currentState=="idle" && prevStateM5 == "working"){
+            if(currentState5 === "idle" && prevStateM5 === "working"){
                 timeM5_stop = performance.now();
                 time_M5 += (timeM5_stop - timeM5_start)/1000;
                 producedPieces_M5 += $scope.orders5[0].amount;
@@ -721,15 +720,15 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
                     tot_leadtime += $scope.t3 - inventory_M5[0];
                     leadtime = tot_leadtime/leadtime_counter;
 
-                    if($scope.orders5[0].product == "E0"){
+                    if($scope.orders5[0].product === "E0"){
                         inventory_E0.push(inventory_M5[0]);
                         inventory_M5.shift();
                     }
-                    if($scope.orders5[0].product == "E1"){
+                    if($scope.orders5[0].product === "E1"){
                         inventory_E1.push(inventory_M5[0]);
                         inventory_M5.shift();
                     }
-                    if($scope.orders5[0].product == "E2"){
+                    if($scope.orders5[0].product === "E2"){
                         inventory_E2.push(inventory_M5[0]);
                         inventory_M5.shift();
                     }
@@ -742,18 +741,18 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
             }
             prevStateM5 = $scope.stats[4].status;
             //change the colors of the machines
-            var machine = document.getElementById("mach5");
-            if(currentState == "idle"){
-                machine.style.backgroundColor = "#00BFFF";
+            var machine5 = document.getElementById("mach5");
+            if(currentState5 === "idle"){
+                machine5.style.backgroundColor = "#00BFFF";
             }
-            if(currentState == "idle" && $scope.orders5.length > 0){
-                machine.style.backgroundColor =  "#FF0000";
+            if(currentState5 === "idle" && $scope.orders5.length > 0){
+                machine5.style.backgroundColor =  "#FF0000";
             }
-            if(currentState == "working"){
-                machine.style.backgroundColor =  "#32CD32";
+            if(currentState5 === "working"){
+                machine5.style.backgroundColor =  "#32CD32";
             }
-            if(currentState == "non-active"){
-                machine.style.backgroundColor = "whitesmoke";
+            if(currentState5 === "non-active"){
+                machine5.style.backgroundColor = "whitesmoke";
             }
         }
 
@@ -794,7 +793,7 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
                         for(var i = 0; i<CO[0][2]; i++){
                             inventory_E0.shift();
                         }
-                    }else{
+                    } else {
                         fix_inventory_E0 += CO[0][2];
                     }
                     break;
@@ -805,7 +804,7 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
                         for(var i = 0; i<CO[0][2]; i++){
                             inventory_E1.shift();
                         }
-                    }else{
+                    } else {
                         fix_inventory_E1 += CO[0][2];
                     }
                     break;
@@ -817,7 +816,7 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
                         for(var i = 0; i < CO[0][2]; i++){
                             inventory_E2.shift();
                         }
-                    }else{
+                    } else {
                         fix_inventory_E2 += CO[0][2];
                     }
                     break;
@@ -868,18 +867,18 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
             $scope.orders4 = [];
             $scope.orders5 = [];
             startstop = "change";
-        }
+        };
         var errorCallback = function (response) {
-            console.log("error")
+            console.log("error");
             alert.call(response);
-        }
+        };
         var data = {
             "startstop": "create"
-        }
+        };
         $http.post('http://'+IPAdress+'/webstartstop', data).then(successCallback, errorCallback);
         $scope.finalTime = "00:00";
         $scope.sessionName = '';
-    }
+    };
 
     //function for starting a session
     $scope.start = function () {
@@ -895,26 +894,25 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
             var data = {
                 "startstop": "start",
                 "parameter": planningParameter
-            }
+            };
             $http.post('http://'+IPAdress+'/webstartstop', data).then(successCallbackStartStop, errorCallback);
-        }
+        };
 
         //ERROR-CALLBACK
         var errorCallback = function (response) {
-            console.log("error")
+            console.log("error");
             alert.call(response);
-        }
+        };
 
         //SUCCES-CALLBACKS
         var successCallbackOrder = function (response) {
             $scope.orderlist = response.data;
-        }
+        };
         var successCallbackStartStop = function (response) {
             startTime = performance.now();
             startstop = 'start';
-        }
+        };
         var successCallbackProducts = function (res) {
-            console.log("Result: ", res, res.data, res.config);
             alert("Initial inventory: \n"+"\nA0: "+res.data.A0+"\nB0: "+res.data.B0+"\nC0: "+res.data.C0+
                           "\nD0: "+res.data.D0+"\nD1: "+res.data.D1+"\nE0: "+res.data.E0+"\nE1: "+res.data.E1+
                           "\nE2: "+res.data.E2);
@@ -945,7 +943,7 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
             for(var i = 0; i < res.data.E2; i++){
                 inventory_E2.push(0);
             }
-        }
+        };
 
         //DATA FOR MAKEPRODUCTORDERS
         switch($scope.planningparameter){
@@ -975,7 +973,7 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
                 webstartstop();
                 break;
         }
-    }
+    };
 
     //function for stoping a session
     $scope.stop = function () {
@@ -984,31 +982,32 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
         var saveInput = document.getElementById("saveinput").className = "visible";
         var successCallback = function (response) {
             startstop = 'stop';
-        }
+        };
         var errorCallback = function (response) {
-            console.log("error")
+            console.log("error");
             alert.call(response);
-        }
+        };
         var data = {
             "startstop": "stop",
             "parameter": "null"
-        }
+        };
 
         $http.post('http://'+IPAdress+'/webstartstop', data).then(successCallback, errorCallback);
-    }
+    };
 
+    //change to parameters page
     $scope.parameters = function () {
         window.location.href='index.html#/parameters';
-    }
+    };
 
     $scope.savesession = function(){
         var successCallback = function (response) {
             console.log("saved succesfully");
-        }
+        };
         var errorCallback = function (response) {
-            console.log("error")
+            console.log("error");
             alert.call(response);
-        }
+        };
         var data = {
             "sessionName":$scope.sessionName,
             "planningAlgoritm":planningParameter,
@@ -1033,17 +1032,19 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
             "timePerPiece_M4":time_M4/producedPieces_M4,
             "timePerPiece_M5":time_M5/producedPieces_M5,
             "timePerPiece": (time_M1/producedPieces_M1 + time_M2/producedPieces_M2 + time_M3/producedPieces_M3 + time_M4/producedPieces_M4+ time_M5/producedPieces_M5)
-        }
+        };
 
-        if($scope.sessionName == null){
-            alert("Please enter a session name");
-        }else{
+        if($scope.sessionName === undefined || $scope.sessionName === ""){
+            bootbox.alert({
+              title: "Error: Saving session",
+              message: "Please enter an appropriate session name in order to save it!"
+            });
+        } else {
             $http.post('http://'+IPAdress+'/websavesession', data).then(successCallback, errorCallback);
             var saveButton1 = document.getElementById("savebutton1").className = "hidden";
             var saveButton2 = document.getElementById("savebutton2").className = "hidden";
             var saveInput = document.getElementById("saveinput").className = "hidden";
         }
-
     }
 });
 

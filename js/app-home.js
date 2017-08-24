@@ -1052,7 +1052,6 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
 });
 
 app.controller('parameterController', function ($scope, $interval) {
-
     //stop the interval function of the homecontroller
     $interval.cancel(homeInterval);
     var login = document.getElementById('login').className = "hidden"; //hide login on the other pages
@@ -1064,122 +1063,69 @@ app.controller('parameterController', function ($scope, $interval) {
     var CONWIPtable = document.getElementById('conwipTable');
 
      //set default parameters
-    $scope.saftystock_A0 = ssA0;
-    $scope.saftystock_B0 = ssB0;
-    $scope.saftystock_C0 = ssC0;
-    $scope.saftystock_D0 = ssD0;
-    $scope.saftystock_D1 = ssD1;
-    $scope.saftystock_E0 = ssE0;
-    $scope.saftystock_E1 = ssE1;
-    $scope.saftystock_E2 = ssE2;
+    $scope.saftystock_A0 = ssA0; $scope.saftystock_B0 = ssB0; $scope.saftystock_C0 = ssC0;
+    $scope.saftystock_D0 = ssD0; $scope.saftystock_D1 = ssD1; $scope.saftystock_E0 = ssE0;
+    $scope.saftystock_E1 = ssE1; $scope.saftystock_E2 = ssE2;
 
-    $scope.lostsize_A0 = lsA0;
-    $scope.lostsize_B0 = lsB0;
-    $scope.lostsize_C0 = lsC0;
-    $scope.lostsize_D0 = lsD0;
-    $scope.lostsize_D1 = lsD1;
-    $scope.lostsize_E0 = lsE0;
-    $scope.lostsize_E1 = lsE1;
-    $scope.lostsize_E2 = lsE2;
+    $scope.lostsize_A0 = lsA0; $scope.lostsize_B0 = lsB0; $scope.lostsize_C0 = lsC0;
+    $scope.lostsize_D0 = lsD0; $scope.lostsize_D1 = lsD1; $scope.lostsize_E0 = lsE0;
+    $scope.lostsize_E1 = lsE1; $scope.lostsize_E2 = lsE2;
 
-    $scope.leadtime_A0 = ltA0;
-    $scope.leadtime_B0 = ltB0;
-    $scope.leadtime_C0 = ltC0;
-    $scope.leadtime_D0 = ltD0;
-    $scope.leadtime_D1 = ltD1;
-    $scope.leadtime_E0 = ltE0;
-    $scope.leadtime_E1 = ltE1;
-    $scope.leadtime_E2 = ltE2;
+    $scope.leadtime_A0 = ltA0; $scope.leadtime_B0 = ltB0; $scope.leadtime_C0 = ltC0;
+    $scope.leadtime_D0 = ltD0; $scope.leadtime_D1 = ltD1; $scope.leadtime_E0 = ltE0;
+    $scope.leadtime_E1 = ltE1; $scope.leadtime_E2 = ltE2;
 
-    $scope.kanban_A0 = kbA0;
-    $scope.kanban_B0 = kbB0;
-    $scope.kanban_C0 = kbC0;
-    $scope.kanban_D0 = kbD0;
-    $scope.kanban_D1 = kbD1;
-    $scope.kanban_E0 = kbE0;
-    $scope.kanban_E1 = kbE1;
-    $scope.kanban_E2 = kbE2;
+    $scope.kanban_A0 = kbA0; $scope.kanban_B0 = kbB0; $scope.kanban_C0 = kbC0;
+    $scope.kanban_D0 = kbD0; $scope.kanban_D1 = kbD1; $scope.kanban_E0 = kbE0;
+    $scope.kanban_E1 = kbE1; $scope.kanban_E2 = kbE2;
 
-    $scope.kanbonlotsize_A0 = kblsA0;
-    $scope.kanbonlotsize_B0 = kblsB0;
-    $scope.kanbonlotsize_C0 = kblsC0;
-    $scope.kanbonlotsize_D0 = kblsD0;
-    $scope.kanbonlotsize_D1 = kblsD1;
-    $scope.kanbonlotsize_E0 = kblsE0;
-    $scope.kanbonlotsize_E1 = kblsE1;
-    $scope.kanbonlotsize_E2 = kblsE2;
+    $scope.kanbonlotsize_A0 = kblsA0; $scope.kanbonlotsize_B0 = kblsB0; $scope.kanbonlotsize_C0 = kblsC0;
+    $scope.kanbonlotsize_D0 = kblsD0; $scope.kanbonlotsize_D1 = kblsD1; $scope.kanbonlotsize_E0 = kblsE0;
+    $scope.kanbonlotsize_E1 = kblsE1; $scope.kanbonlotsize_E2 = kblsE2;
 
-    $scope.wipcap = wipcap;
-    $scope.workahead = workahead;
+    $scope.wipcap = wipcap; $scope.workahead = workahead;
 
-
-    if(planningParameter == "MRP"){
+    if(planningParameter === "MRP"){
         MRPtable.className = "table table-hover";
         KANBANtable.className = "hidden";
         CONWIPtable.className = "hidden";
     }
-    if(planningParameter == "KANBAN"){
+    if(planningParameter === "KANBAN"){
         MRPtable.className = "hidden";
         KANBANtable.className = "table table-hover";
         CONWIPtable.className = "hidden";
     }
-    if(planningParameter == "CONWIP"){
+    if(planningParameter === "CONWIP"){
         MRPtable.className = "hidden";
         KANBANtable.className = "hidden";
         CONWIPtable.className = "table table-hover";
     }
 
     $scope.saveParameters = function(){
-        if(planningParameter == 'MRP'){
-            ssA0 = $scope.saftystock_A0;
-            ssB0 = $scope.saftystock_B0;
-            ssC0 = $scope.saftystock_C0;
-            ssD0 = $scope.saftystock_D0;
-            ssD1 = $scope.saftystock_D1;
-            ssE0 = $scope.saftystock_E0;
-            ssE1 = $scope.saftystock_E1;
-            ssE2 = $scope.saftystock_E2;
+        if(planningParameter === 'MRP'){
+            ssA0 = $scope.saftystock_A0; ssB0 = $scope.saftystock_B0; ssC0 = $scope.saftystock_C0;
+            ssD0 = $scope.saftystock_D0; ssD1 = $scope.saftystock_D1; ssE0 = $scope.saftystock_E0;
+            ssE1 = $scope.saftystock_E1; ssE2 = $scope.saftystock_E2;
 
-            lsA0 = $scope.lostsize_A0;
-            lsB0 = $scope.lostsize_B0;
-            lsC0 = $scope.lostsize_C0;
-            lsD0 = $scope.lostsize_D0;
-            lsD1 = $scope.lostsize_D1;
-            lsE0 = $scope.lostsize_E0;
-            lsE1 = $scope.lostsize_E1;
-            lsE2 = $scope.lostsize_E2;
+            lsA0 = $scope.lostsize_A0; lsB0 = $scope.lostsize_B0; lsC0 = $scope.lostsize_C0;
+            lsD0 = $scope.lostsize_D0; lsD1 = $scope.lostsize_D1; lsE0 = $scope.lostsize_E0;
+            lsE1 = $scope.lostsize_E1; lsE2 = $scope.lostsize_E2;
 
-            ltA0 = $scope.leadtime_A0;
-            ltB0 = $scope.leadtime_B0;
-            ltC0 = $scope.leadtime_C0;
-            ltD0 = $scope.leadtime_D0;
-            ltD1 = $scope.leadtime_D1;
-            ltE0 = $scope.leadtime_E0;
-            ltE1 = $scope.leadtime_E1;
-            ltE2 = $scope.leadtime_E2;
+            ltA0 = $scope.leadtime_A0; ltB0 = $scope.leadtime_B0; ltC0 = $scope.leadtime_C0;
+            ltD0 = $scope.leadtime_D0; ltD1 = $scope.leadtime_D1; ltE0 = $scope.leadtime_E0;
+            ltE1 = $scope.leadtime_E1; ltE2 = $scope.leadtime_E2;
         }
-        else if(planningParameter == 'KANBAN'){
-            kbA0 = $scope.kanban_A0;
-            kbB0 = $scope.kanban_B0;
-            kbC0 = $scope.kanban_C0;
-            kbD0 = $scope.kanban_D0;
-            kbD1 = $scope.kanban_D1;
-            kbE0 = $scope.kanban_E0;
-            kbE1 = $scope.kanban_E1;
-            kbE2 = $scope.kanban_E2;
+        else if(planningParameter === 'KANBAN'){
+            kbA0 = $scope.kanban_A0; kbB0 = $scope.kanban_B0; kbC0 = $scope.kanban_C0;
+            kbD0 = $scope.kanban_D0; kbD1 = $scope.kanban_D1; kbE0 = $scope.kanban_E0;
+            kbE1 = $scope.kanban_E1; kbE2 = $scope.kanban_E2;
 
-            kblsA0  = $scope.kanbonlotsize_A0;
-            kblsB0  = $scope.kanbonlotsize_B0;
-            kblsC0  = $scope.kanbonlotsize_C0;
-            kblsD0  = $scope.kanbonlotsize_D0;
-            kblsD1  = $scope.kanbonlotsize_D1;
-            kblsE0  = $scope.kanbonlotsize_E0;
-            kblsE1  = $scope.kanbonlotsize_E1;
-            kblsE2  = $scope.kanbonlotsize_E2;
+            kblsA0  = $scope.kanbonlotsize_A0; kblsB0  = $scope.kanbonlotsize_B0; kblsC0  = $scope.kanbonlotsize_C0;
+            kblsD0  = $scope.kanbonlotsize_D0; kblsD1  = $scope.kanbonlotsize_D1; kblsE0  = $scope.kanbonlotsize_E0;
+            kblsE1  = $scope.kanbonlotsize_E1; kblsE2  = $scope.kanbonlotsize_E2;
         }
-        else if(planningParameter == 'CONWIP'){
-            wipcap = $scope.wipcap;
-            workahead = $scope.workahead;
+        else if(planningParameter === 'CONWIP'){
+            wipcap = $scope.wipcap; workahead = $scope.workahead;
         }
         $scope.submitted = "Parameters saved!";
     }
@@ -1192,44 +1138,31 @@ app.controller('analyseController', function ($scope, $interval, $http) {
     var login = document.getElementById('login').className = "hidden"; //hide login on the other pages
     var navbar = document.getElementById('myNavbar').className = "collapse navbar-collapse"; //show navbar when you refresh
 
-    $scope.data;
+    // $scope.data;
     var successCallbackGet = function (response) {
         $scope.data = response.data;
-    }
+    };
     var errorCallback = function (response) {
-        console.log("error")
+        console.log("error");
         alert.call(response);
-    }
-
+    };
     $http.get('http://'+IPAdress+'/getsessions').then(successCallbackGet, errorCallback);
 
-    var successCallbackPost = function (response) { }
-    var errorCallback = function (response) {
-        console.log("error")
-        alert.call(response);
-    }
+    var successCallbackPost = function (response) { console.log("webdeletesession: ", response) };
     $scope.deleteSession = function(sessionNumber){
         var data =  {number:sessionNumber};
         $http.post('http://'+IPAdress+'/webdeletesession', data).then(successCallbackPost, errorCallback);
-    }
+    };
 
-    $scope.col1 = false;
-    $scope.col2 = false;
-    $scope.col3 = false;
-    $scope.col4 = false;
-    $scope.col5 = false;
-    $scope.col6 = false;
-    $scope.col7 = false;
-    $scope.col8 = false;
-    $scope.col9 = false;
-    $scope.col10 = false;
+    $scope.col1 = false; $scope.col2 = false; $scope.col3 = false; $scope.col4 = false;
+    $scope.col5 = false; $scope.col6 = false; $scope.col7 = false; $scope.col8 = false;
+    $scope.col9 = false; $scope.col10 = false;
 });
 
 app.controller('instructionsController', function($scope, $interval){
     $interval.cancel(homeInterval);
     var login = document.getElementById('login').className = "hidden"; //hide login on the other pages
     var navbar = document.getElementById('myNavbar').className = "collapse navbar-collapse"; //show navbar when you refresh
-
 });
 
 app.controller('contactController', function($scope, $interval){

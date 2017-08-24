@@ -35,13 +35,12 @@
                     <button type="button" class="btn" ng-click="deleteSession(9)">Erase</button>
                 </th>
             </tr>
-            <tr id="lain">
+            <tr class="lain">
                 <th class="col-lg-2 text-center"></th>
                 <th class="col-lg-1 text-center" ng-hide="col1">
                     <button type="button" class="close" aria-label="Close" ng-click="col1 = !col1">
                         {{data[0].sessionName}}
                     </button>
-
                 </th>
                 <th class="col-lg-1 text-center" ng-hide="col2">
                     <button type="button" class="close" aria-label="Close" ng-click="col2 = !col2">
@@ -132,7 +131,7 @@
                 <td class="col-lg-1 text-center" ng-hide="col10">{{data[9].averageFgi}}</td>
 
             </tr>
-            <tr id="lain">
+            <tr class="lain">
                 <td class="col-lg-2 text-left"><b>UTILISATION</b></td>
                 <td class="col-lg-1 text-center" ng-hide="col1"></td>
                 <td class="col-lg-1 text-center" ng-hide="col2"></td>
@@ -210,7 +209,7 @@
                 <td class="col-lg-1 text-center" ng-hide="col9">{{data[8].utilisation_M1}}</td>
                 <td class="col-lg-1 text-center" ng-hide="col10">{{data[9].utilisation_M1}}</td>
             </tr>
-            <tr id="lain">
+            <tr class="lain">
                 <td class="col-lg-2 text-left"><b>TIME/PIECE</b></td>
                 <td class="col-lg-1 text-center" ng-hide="col1"></td>
                 <td class="col-lg-1 text-center" ng-hide="col2"></td>
@@ -289,7 +288,7 @@
                 <td class="col-lg-1 text-center" ng-hide="col10">{{data[9].timePerPiece_M1}}</td>
             </tr>
 
-            <tr id="lain">
+            <tr class="lain">
                 <td class="col-lg-2 text-left">Servicelevel:</td>
                 <td class="col-lg-1 text-center" ng-hide="col1">{{data[0].serviceLevel}}</td>
                 <td class="col-lg-1 text-center" ng-hide="col2">{{data[1].serviceLevel}}</td>
@@ -302,7 +301,7 @@
                 <td class="col-lg-1 text-center" ng-hide="col9">{{data[8].serviceLevel}}</td>
                 <td class="col-lg-1 text-center" ng-hide="col10">{{data[9].serviceLevel}}</td>
             </tr>
-            <tr id="lain">
+            <tr class="lain">
                 <td class="col-lg-2 text-left">Leadtime: </td>
                 <td class="col-lg-1 text-center" ng-hide="col1">{{data[0].leadtime}}</td>
                 <td class="col-lg-1 text-center" ng-hide="col2">{{data[1].leadtime}}</td>

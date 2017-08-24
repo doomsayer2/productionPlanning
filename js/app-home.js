@@ -205,6 +205,7 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
     $scope.orders3 = [];
     $scope.orders4 = [];
     $scope.orders5 = [];
+    $scope.disableBtn = true;
     //variables for calculating the leadtime
     var tot_leadtime = 0; //total seconds of products in production
     var leadtime = 0; //total seconds of products in production devided by the amount of products produced
@@ -882,6 +883,7 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
 
     //function for starting a session
     $scope.start = function () {
+        $scope.disableBtn = false;
         resetvariables(); //set costumerorders, as I delete them during the game, and other variables back to basic
 
         //hide buttons and input for save the session
@@ -977,6 +979,7 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
 
     //function for stoping a session
     $scope.stop = function () {
+        $scope.disableBtn = true;
         var saveButton1 = document.getElementById("savebutton1").className = "btn btn-info";
         var saveButton2 = document.getElementById("savebutton2").className = "btn btn-info";
         var saveInput = document.getElementById("saveinput").className = "visible";

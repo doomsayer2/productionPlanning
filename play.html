@@ -10,7 +10,7 @@
 
     <div class="col-lg-4" style="margin-top:-0px;">
         <button ng-click="start()" id="btnStart" class="button">Start session</button>
-        <button ng-click="stop()" id="btnStop" class="button">Stop session</button>
+        <button ng-click="stop()" id="btnStop" class="button" ng-disabled="disableBtn">Stop session</button>
         <button ng-click="createSession()" id="btnReset" class="button">Reset</button>
         <button ng-click="parameters()" id="btnChange" class="button">Change parameters</button>
     </div>

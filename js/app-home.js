@@ -468,7 +468,7 @@ app.controller('playgameController', function ($scope, $http, $location, $interv
 
         //push orders in orderslists when time is equal
         for (i = 0; i < $scope.orderlist.length; i++) {
-            if ($scope.t3 === $scope.orderlist[i].time) {
+            if ($scope.t3 === parseFloat($scope.orderlist[i].time)) {
                 switch($scope.orderlist[i].machine){
                     case "machine1":
                             $scope.orders1.push($scope.orderlist[i]);
